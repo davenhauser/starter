@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="/css/main.css">
 
-<!--  If you must use outside libs that aren't Angular-specific, include them BEFORE Angular -->
+  <!-- If you must use outside libs that aren't Angular-specific, include them BEFORE Angular. -->
   <script src="/js/jwt-decode.2.0.1.js"></script>
 
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
@@ -16,22 +16,18 @@
 
 </head>
 <body>
-
   <div class="container-fluid">
     <header>
-
-    <header>
-    <nav class="navbar navbar-default navbar-fixed-top">
+      <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
-          <button ui-sref="signin" ui-sref-active="active" type="button" class="btn btn-default navbar-btn navbar-right">Sign in</button>
-
-        <a ui-sref="welcome" ui-sref-active="active" class="btn navbar-left">Home</a>
+          <a ui-sref="welcome" class="navbar-brand">Home</a>
+          <button ui-sref="signin" type="button" class="btn btn-default navbar-btn navbar-right">Sign in</button>
         </div>
       </nav>
     </header>
 
     <main class="content" ui-view>
-      <p>This is the app's contents.</p>
+      <!-- ui-router (aka ui.router) inserts templates here -->
     </main>
   </div> <!-- div.container-fluid -->
 
@@ -41,10 +37,12 @@
     <br>
     <span>© 2015, WDI</span>
   </footer>
+
   <script src="/js/app.module.js"></script>
-  <script src="/js/app.router.js"></script>
+  <script src="/js/app.routes.js"></script>
   <script src="/js/token.service.js"></script>
   <script src="/js/auth.service.js"></script>
+  <script src="/js/user.service.js"></script>
   <script src="/js/signin.controller.js"></script>
 </body>
 </html>

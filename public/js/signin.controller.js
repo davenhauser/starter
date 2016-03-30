@@ -5,9 +5,9 @@
     .module("app")
     .controller("SignInController", SignInController);
 
-  SignInController.$inject = ["$log", "$http", "authService"];
+  SignInController.$inject = ["$log", "authService", "userService"];
 
-  function SignInController($log, $http, authService) {
+  function SignInController($log, authService, userService) {
     var vm = this;
 
     // BINDINGS
@@ -26,19 +26,7 @@
 
     // FUNCTIONS
     function submitSignUp() {
-      $http
-        .post('/api/users', vm.signUp, {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(
-          function(res) {
-            $log.info("Success:", res);
-            authService.logIn(vm.signUp);
-          },
-          function(err) { $log.info("Error:", err); }
-        );
+      userService.create(vm.signUp)
     }
 
     function submitLogIn() {
