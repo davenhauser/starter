@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title>Auth App</title>
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+<!--  If you must use outside libs that aren't Angular-specific, include them BEFORE Angular -->
+  <script src="/js/jwt-decode.2.0.1.js"></script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+
+</head>
+<body>
+
+  <div class="container-fluid">
+    <header>
+
+    <header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <button ui-sref="signin" ui-sref-active="active" type="button" class="btn btn-default navbar-btn navbar-right">Sign in</button>
+
+        <a ui-sref="welcome" ui-sref-active="active" class="btn navbar-left">Home</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="content" ui-view>
+      <p>This is the app's contents.</p>
+    </main>
+  </div> <!-- div.container-fluid -->
+
+  <footer>
+    <hr>
+    <span>Made with <i class="glyphicon glyphicon-star"></i> in DTLA.</span>
+    <br>
+    <span>© 2015, WDI</span>
+  </footer>
+  <script src="/js/app.module.js"></script>
+  <script src="/js/app.router.js"></script>
+  <script src="/js/token.service.js"></script>
+  <script src="/js/signin.controller.js"></script>
+</body>
+</html>
