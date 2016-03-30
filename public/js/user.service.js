@@ -1,3 +1,4 @@
+
 (function () {
   'use strict';
 
@@ -24,15 +25,11 @@
           'Content-Type': 'application/json'
         }
       })
-      .then(
-        function(res) {
+      .then(function(res) {
+        // authService.logIn(res.config.data);
+        authService.logIn(data);
+      });
 
-          $log.info("Success:", res);
-          return res;
-          // authService.logIn(res.config.data);
-          authService.logIn(data);
-        }
-      );
       return promise;
     }
   }

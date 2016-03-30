@@ -65,3 +65,6 @@ form {
   max-width: 600px;
   margin: 0 auto;
 
+#exampleInputEmail1 {
+  border: 2px solid red;
+}
