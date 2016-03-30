@@ -1,38 +1,39 @@
-(function(){
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
+  angular
     .module('app')
     .factory("tokenService", tokenService);
 
-    tokenService.$inject = ["$log", "$window"];
+  tokenService.$inject = ["$log", "$window"];
 
-    function tokenService($log, $window) {
-      $log.info("token service loaded!")
+  function tokenService($log, $window) {
+    $log.info("token service loaded!");
 
-      const TOKEN_KEY = 'token'
-      var service = {
-        store: store,
-        retrieve: retrieve,
-        decode: decode,
-        destroy: destroy
-      };
+    const TOKEN_KEY = 'shmee-banana';
+    var service = {
+      store:    store,
+      retrieve: retrieve,
+      decode:   decode,
+      destroy:  destroy
+    };
+    return service;
 
-      return service;
-
-      function store(token){
-         $window.localStorage.setItem(TOKEN_KEY, token);
-      }
-      function retrieve(){
-        return $window.localStorage.getItem(TOKEN_KEY);
-      }
-
-      function decode(){
-        return $window.jwt_decode(retrieve());
-      }
-
-      function destroy(){
-        $window.localStorage.removeItem(TOKEN_KEY);
-      }
+    function store(token) {
+      $window.localStorage.setItem(TOKEN_KEY, token);
     }
+
+    function retrieve() {
+      return $window.localStorage.getItem(TOKEN_KEY);
+    }
+
+    function decode() {
+      return $window.jwt_decode(retrieve());
+    }
+
+    function destroy() {
+      $window.localStorage.removeItem(TOKEN_KEY);
+    }
+  }
+
 })();

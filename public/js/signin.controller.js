@@ -5,9 +5,9 @@
     .module("app")
     .controller("SignInController", SignInController);
 
-  SignInController.$inject = ["$log", "$http", "$window", "tokenService"];
+  SignInController.$inject = ["$log", "$http", "authService"];
 
-  function SignInController($log, $http, $window, tokenService) {
+  function SignInController($log, $http, authService) {
     var vm = this;
 
     // BINDINGS
@@ -18,11 +18,14 @@
       passwordConfirmation: "12345"
     };
     vm.submitSignUp = submitSignUp;
+    vm.logIn = {
+      email:    "pj@ga.co",
+      password: "12345"
+    };
+    vm.submitLogIn = submitLogIn;
 
     // FUNCTIONS
     function submitSignUp() {
-      // $log.info(vm.signUp);
-
       $http
         .post('/api/users', vm.signUp, {
           headers: {
@@ -31,30 +34,15 @@
         })
         .then(
           function(res) {
-            $log.info("Succes:", res);
-            generateToken();
+            $log.info("Success:", res);
+            authService.logIn(vm.signUp);
           },
           function(err) { $log.info("Error:", err); }
         );
     }
 
-    function generateToken() {
-      $http
-        .post('/api/token', vm.signUp, {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(
-          function(res) {
-
-            tokenService.store(res.data.token)
-            $log.info("Succes:", tokenService.decode());
-            $log.info("Success:", tokenService.destroy());
-            // $log.info("Destroyed:", tokenService.retrieve());
-          },
-          function(err) { $log.info("Error:", err); }
-        );
+    function submitLogIn() {
+      authService.logIn(vm.logIn);
     }
 
     $log.info("SignInController loaded!");
