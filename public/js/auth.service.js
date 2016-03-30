@@ -16,7 +16,7 @@
     return service;
 
     function logIn(data) {
-      $http({
+      var promise = $http({
         method: 'POST',
         url:    '/api/token',
         data:   data,
@@ -31,6 +31,7 @@
         },
         function(err) { $log.info("Error:", err); }
       );
+      return promise; //so we can keep chanining on it (in our signin controller)
     }
   }
 

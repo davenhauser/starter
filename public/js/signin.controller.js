@@ -5,9 +5,9 @@
     .module("app")
     .controller("SignInController", SignInController);
 
-  SignInController.$inject = ["$log", "authService", "userService"];
+  SignInController.$inject = ["$log", "authService", "userService", "$state"];
 
-  function SignInController($log, authService, userService) {
+  function SignInController($log, authService, userService, $state) {
     var vm = this;
 
     // BINDINGS
@@ -26,11 +26,25 @@
 
     // FUNCTIONS
     function submitSignUp() {
-      userService.create(vm.signUp)
+      userService
+      .create(vm.signUp)
+      .then(function(){
+        $state.go('welcome');
+      }, function(err) {
+        $log.info('Error:', err)
+      });
     }
 
     function submitLogIn() {
-      authService.logIn(vm.logIn);
+      authService
+      .logIn(vm.logIn)
+      .then(function(decodedToken){
+        $state.go('welcome')
+      },
+      function(err) {
+          $log.info('Error', err);
+      }
+      );
     }
 
     $log.info("SignInController loaded!");
