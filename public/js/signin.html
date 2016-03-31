@@ -4,13 +4,13 @@
   <form ng-submit="vm.submitLogIn();" name="signInForm" novalidate>
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
-      <input ng-model="vm.logIn.email" type="email" ng-model="email" name="email" required class="form-control" id="exampleInputEmail1" placeholder="Email">
+      <input required ng-model="vm.logIn.email" type="email" ng-model="email" name="email" required class="form-control" id="exampleInputEmail1" placeholder="Email">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input ng-model="vm.logIn.password" type="password" ng-model="password" name="password" required class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <input required ng-model="vm.logIn.password" type="password" ng-model="password" name="password" required class="form-control" id="exampleInputPassword1" placeholder="Password">
     </div>
-    <button type="submit" ng-disabled="signInForm.$invalid" class="btn btn-default">Submit</button>
+    <button ng-disabled="signInForm.$invalid" type="submit" ng-disabled="signInForm.$invalid" class="btn btn-default">Submit</button>
   </form>
 
   <p>
@@ -24,15 +24,15 @@
 <div class="sign-up-form" ng-show="vm.toggleValue">
   <h1>Sign Up</h1>
 
-  <form ng-submit="vm.submitSignUp();">
+  <form ng-submit="vm.submitSignUp();" name="signUpForm">
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
-      <input ng-model="vm.signUp.email" type="email" ng-class="{'red-border': vm.conflict}" class="form-control" id="exampleInputEmail1" placeholder="Email">
+      <input required ng-model="vm.signUp.email" type="email" ng-class="{'red-border': vm.conflict}" class="form-control" id="exampleInputEmail1" placeholder="Email">
       <small ng-show="vm.conflict" class="text-danger"><em>Email exists…</em></small>
     </div>
     <div class="form-group">
       <label for="exampleInputName">Name</label>
-      <input ng-model="vm.signUp.name" type="text" class="form-control" id="exampleInputName" placeholder="Name">
+      <input required ng-model="vm.signUp.name" type="text" class="form-control" id="exampleInputName" placeholder="Name">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
@@ -40,9 +40,9 @@
     </div>
     <div class="form-group">
       <label for="exampleInputPassword2">Password confirmation</label>
-      <input ng-model="vm.signUp.passwordConfirmation" type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+      <input required ng-model="vm.signUp.passwordConfirmation" type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button ng-disabled="signUpForm.$invalid" type="submit" class="btn btn-default">Submit</button>
   </form>
 
   <p>
