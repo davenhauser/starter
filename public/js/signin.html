@@ -27,7 +27,8 @@
   <form ng-submit="vm.submitSignUp();">
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
-      <input ng-model="vm.signUp.email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+      <input ng-model="vm.signUp.email" type="email" ng-class="{'red-border': vm.conflict}" class="form-control" id="exampleInputEmail1" placeholder="Email">
+      <small ng-show="vm.conflict" class="text-danger"><em>Email exists…</em></small>
     </div>
     <div class="form-group">
       <label for="exampleInputName">Name</label>

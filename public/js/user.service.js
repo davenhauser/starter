@@ -1,4 +1,3 @@
-
 (function () {
   'use strict';
 
@@ -6,9 +5,9 @@
     .module('app')
     .factory("userService", userService);
 
-  userService.$inject = ["$log", "$http", "authService"];
+  userService.$inject = ["$log", "$http"];
 
-  function userService($log, $http, authService) {
+  function userService($log, $http) {
     $log.info("user service loaded!");
 
     var service = {
@@ -24,10 +23,6 @@
         headers: {
           'Content-Type': 'application/json'
         }
-      })
-      .then(function(res) {
-        // authService.logIn(res.config.data);
-        authService.logIn(data);
       });
 
       return promise;

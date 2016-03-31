@@ -23,6 +23,7 @@
       password: "12345"
     };
     vm.submitLogIn = submitLogIn;
+    vm.conflict = false;
 
     // FUNCTIONS
     function submitSignUp() {
@@ -39,7 +40,8 @@
           },
           // on error
           function(err) {
-            $log.info('Error:', err);
+            if (err.status === 409) vm.conflict = true;
+            $log.info('Error Claire-r:', err);
           }
         );
     }

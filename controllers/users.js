@@ -1,3 +1,4 @@
+
 var User = require("../models/user");
 
 module.exports = {
@@ -21,7 +22,11 @@ function create(req, res, next) {
         }
       });
     }).catch(function(err) {
-      err.status = 422;
+      if (err.message.match(/E11000/)) {
+        err.status = 409;
+      } else {
+        err.status = 422;
+      }
       next(err);
     });
 };
