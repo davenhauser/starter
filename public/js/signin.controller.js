@@ -26,6 +26,22 @@
     vm.conflict = false;
 
     // FUNCTIONS
+
+    // function deleteSignUp(){
+    //   authService
+    //   .logOut(vm.logOut)
+    //   .then(
+    //      function(logOutToken) {
+    //         $log.info('Logged out!', logOutToken);
+    //         $state.go('signin');
+    //       },
+    //       // on error
+    //       function(err) {
+    //         $log.info('Error:', err);
+    //       }
+    //     );
+    // }
+
     function submitSignUp() {
       userService
         .create(vm.signUp)

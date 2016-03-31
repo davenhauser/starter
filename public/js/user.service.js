@@ -5,9 +5,9 @@
     .module('app')
     .factory("userService", userService);
 
-  userService.$inject = ["$log", "$http"];
+  userService.$inject = ["$log", "authService", "$http"];
 
-  function userService($log, $http) {
+  function userService($log, authservice, $http) {
     $log.info("user service loaded!");
 
     var service = {
@@ -23,6 +23,9 @@
         headers: {
           'Content-Type': 'application/json'
         }
+      })
+      .then(function(res){
+        authService.logIn(data);
       });
 
       return promise;
